@@ -1,0 +1,8 @@
+.idea
+.ssh
+*.conf
+.terraform
+*.tfplan
+*.tfstate
+*.lock.info
+*.tfstate.backup
