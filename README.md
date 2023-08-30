@@ -24,6 +24,7 @@ Contains examples of terraform CI/CD pipelines for GitHub Actions and Azure Pipe
 ## Documentation
 
 - https://github.com/antonbabenko/pre-commit-terraform
+- https://github.com/kolosovpetro/AzureTerraformBackend
 - https://github.com/terraform-docs/terraform-docs
 - https://terraform-docs.io/user-guide/installation/
 - https://pre-commit.com/

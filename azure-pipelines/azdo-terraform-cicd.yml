@@ -72,6 +72,10 @@ stages:
             displayName: 'Terraform Plan'
             env:
               PREFIX: $(prefix)
+              ARM_SUBSCRIPTION_ID: $(subscriptionId)
+              ARM_CLIENT_ID: $(clientId)
+              ARM_CLIENT_SECRET: $(clientSecret)
+              ARM_TENANT_ID: $(tenantId)
 
           - bash: cp main.tfplan $(Build.ArtifactStagingDirectory)
             displayName: 'Copy Plan'
@@ -129,3 +133,8 @@ stages:
                     terraform apply -auto-approve main.tfplan
                   displayName: 'Terraform Apply'
                   workingDirectory: $(workingDir)
+                  env:
+                    ARM_SUBSCRIPTION_ID: $(subscriptionId)
+                    ARM_CLIENT_ID: $(clientId)
+                    ARM_CLIENT_SECRET: $(clientSecret)
+                    ARM_TENANT_ID: $(tenantId)
