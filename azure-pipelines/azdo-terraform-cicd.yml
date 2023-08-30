@@ -1,13 +1,16 @@
-trigger:
-  batch: true
-  branches:
-    include:
-      - master
+#trigger:
+#  batch: true
+#  branches:
+#    include:
+#      - master
+#
+#pr:
+#  branches:
+#    include:
+#      - '*'
 
-pr:
-  branches:
-    include:
-      - '*'
+trigger: none
+pr: none
 
 variables:
   - name: TF_LOG
