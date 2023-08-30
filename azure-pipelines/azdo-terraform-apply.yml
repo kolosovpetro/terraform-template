@@ -17,7 +17,7 @@ variables:
     value: INFO
   - name: workingDir
     value: '$(System.DefaultWorkingDirectory)'
-  - group: 'TF_SETTINGS_APPLY' # update to your variable group name
+  - group: 'TF_SETTINGS' # update to your variable group name
 
 stages:
   - stage: "Terraform_Plan"
