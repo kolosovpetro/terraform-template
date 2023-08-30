@@ -24,3 +24,9 @@ repos:
         exclude: '^modules|^example|^tools'
       - id: terraform_validate
         exclude: '^examples'
+
+      - id: terraform_tflint
+        exclude: ^examples
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/.config/tflint.hcl
+          - --env-vars=TFLINT_LOG="info"
