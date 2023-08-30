@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "public" {
 }
 
 module "resource_group" {
-  source = "./modules/example_submodule"
+  source                  = "./modules/example_submodule"
   resource_group_location = "northeurope"
-  resource_group_name = "rg-from-module"
+  resource_group_name     = "rg-from-module"
 }

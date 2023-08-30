@@ -12,9 +12,6 @@ sections:
   hide: [requirements]
 
 content: |-
-  ```hcl
-  {{ include "examples/main/modules.tf" }}
-  ```
 
   {{ .Providers }}
 
