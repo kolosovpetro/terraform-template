@@ -1,4 +1,9 @@
-# terraform-template
+# Terraform template
+
+Terraform template for modules and sub-modules.
+Includes pre-commit hooks that lint the terraform code and generate module's
+documentation as part of README file.
+Contains examples of terraform CI/CD pipelines for GitHub Actions and Azure Pipelines.
 
 ## Pre-commit configuration
 
@@ -6,6 +11,7 @@
 - `pip install --upgrade pip`
 - `pip install pre-commit`
 - Update PATH variable
+- `pre-commit install`
 
 ## Install terraform docs
 
