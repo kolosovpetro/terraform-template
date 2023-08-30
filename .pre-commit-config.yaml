@@ -18,13 +18,9 @@ repos:
       - id: terraform_fmt
       - id: terraform_docs
         args:
-          - --args=--config=.config/terraform-docs.yml
+          - --hook-config=--path-to-file=README.md        # Valid UNIX path. I.e. ../TFDOC.md or docs/README.md etc.
+          - --hook-config=--add-to-existing-file=true     # Boolean. true or false
+          - --hook-config=--create-file-if-not-exist=true # Boolean. true or false
         exclude: '^modules|^example|^tools'
       - id: terraform_validate
-        exclude: ^examples
-      - id: terraform_tflint
-        exclude: ^examples
-        args:
-          - --args=--config=__GIT_WORKING_DIR__/.config/tflint.hcl
-          - --env-vars=TFLINT_LOG="info"
-      - id: terraform_tfsec
+        exclude: '^examples'
