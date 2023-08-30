@@ -1,0 +1,29 @@
+---
+# This file is automatically maintained within this module repository -- DO NOT EDIT
+formatter: "markdown"
+
+settings:
+  anchor: false
+  lockfile: false
+
+output:
+  file: "README.md"
+
+sections:
+  hide: [requirements]
+
+content: |-
+  ```hcl
+  {{ include "examples/main/modules.tf" }}
+  ```
+
+  {{ .Providers }}
+
+  {{ .Modules }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+...
