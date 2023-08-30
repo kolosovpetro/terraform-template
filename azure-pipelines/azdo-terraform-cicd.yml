@@ -83,7 +83,7 @@ stages:
 
   - stage: 'Terraform_Apply'
     displayName: 'Terraform_Apply'
-    dependsOn: 'Terraform_Apply'
+    dependsOn: 'Terraform_Plan'
     condition: succeeded('Terraform_Plan')
     jobs:
       - deployment: 'Terraform_Apply'
