@@ -80,10 +80,6 @@ jobs:
           storageAccount: 'sttfstate259'
           container: 'contstate'
 
-      - name: Check output
-        run: |
-          echo ${{ steps.GenerateSASToken.outputs.sas_token }}
-
       - name: Terraform Init
         shell: bash
         run: |
