@@ -70,8 +70,8 @@ jobs:
         shell: pwsh
         run: |
           $Date = (Get-Date).AddDays(1).ToString('yyyy-MM-dd')
-          $key = $( az storage account keys list --resource-group $(rgName) --account-name $(storageAccount) --query [0].value -o tsv )
-          $sas = $( az storage container generate-sas --name $(container) --expiry $Date --permissions "racwdli" --account-name $(storageAccount) --account-key "$key" )
+          $key = $( az storage account keys list --resource-group ${{ env.rgName }} --account-name ${{ env.storageAccount }} --query [0].value -o tsv )
+          $sas = $( az storage container generate-sas --name ${{ env.container }} --expiry $Date --permissions "racwdli" --account-name ${{ env.storageAccount }} --account-key "$key" )
           $sas = $sas.Replace("`"","")
           echo "::set-output name=sas_token::$sas"
         env:
