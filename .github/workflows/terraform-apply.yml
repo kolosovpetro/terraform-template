@@ -74,12 +74,15 @@ jobs:
           $key = $( az storage account keys list --resource-group ${{ env.rgName }} --account-name ${{ env.storageAccount }} --query [0].value -o tsv )
           $sas = $( az storage container generate-sas --name ${{ env.container }} --expiry $Date --permissions "racwdli" --account-name ${{ env.storageAccount }} --account-key "$key" )
           $sas = $sas.Replace("`"","")
-          echo $sas
           echo "sas_token=$sas" >> $GITHUB_OUTPUT
         env:
           rgName: 'rg-tf-state102-uat02'
           storageAccount: 'sttfstate259'
           container: 'contstate'
+
+      - name: Check output
+        run: |
+          echo ${{ steps.GenerateSASToken.outputs.sas_token }}
 
       - name: Terraform Init
         shell: bash
