@@ -1,4 +1,4 @@
-name: Validate Terraform
+name: Terraform Validate
 
 on:
   push:
@@ -19,8 +19,8 @@ on:
 #    - cron: '0 0 * * 0'
 
 jobs:
-  build-webapp:
-    name: Validate Terraform
+  terraform-validate:
+    name: Terraform Validate
     runs-on: ${{ matrix.environment }}
     strategy:
       matrix:
