@@ -23,10 +23,10 @@ repos:
           - --hook-config=--create-file-if-not-exist=true
         exclude: '^modules|^example|^tools'
       - id: terraform_validate
-        exclude: '^examples'
+        exclude: '^examples|^modules'
 
       - id: terraform_tflint
-        exclude: ^examples
+        exclude: '^examples'
         args:
           - --args=--config=__GIT_WORKING_DIR__/.config/tflint.hcl
           - --env-vars=TFLINT_LOG="info"

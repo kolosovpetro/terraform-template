@@ -6,3 +6,4 @@
 *.tfstate
 *.lock.info
 *.tfstate.backup
+*.lock.hcl
