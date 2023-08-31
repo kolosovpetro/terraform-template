@@ -74,6 +74,7 @@ jobs:
           $key = $( az storage account keys list --resource-group ${{ env.rgName }} --account-name ${{ env.storageAccount }} --query [0].value -o tsv )
           $sas = $( az storage container generate-sas --name ${{ env.container }} --expiry $Date --permissions "racwdli" --account-name ${{ env.storageAccount }} --account-key "$key" )
           $sas = $sas.Replace("`"","")
+          echo $sas
           echo "sas_token=$sas" >> $GITHUB_OUTPUT
         env:
           rgName: 'rg-tf-state102-uat02'
