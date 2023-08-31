@@ -94,5 +94,11 @@ jobs:
           container: 'contstate'
           sas_token: ${{ steps.GenerateSASToken.outputs.sas_token }}
 
+      - name: Terraform Plan
+        shell: bash
+        run: terraform plan -var "prefix=${{ env.prefix }}" out ${{ env.STATE_FILE_NAME }}
+        env:
+          prefix: 'gha01'
+
     outputs:
       sas_token: ${{ steps.GenerateSASToken.outputs.sas_token }}
