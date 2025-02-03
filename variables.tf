@@ -23,7 +23,7 @@ variable "tags" {
   description = "Tags for all resources"
   default = {
     Environment  = "DEV"
-    Owner        = "Rerraform"
+    Owner        = "Terraform"
     Autoshutdown = "OFF"
   }
 }
