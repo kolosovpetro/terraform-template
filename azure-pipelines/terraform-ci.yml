@@ -1,25 +1,20 @@
-#trigger:
-#  batch: true
-#  branches:
-#    include:
-#      - master
-#  paths:
-#    include:
-#      - '*'
-#
-#pr:
-#  branches:
-#    include:
-#      - '*'
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - '*'
 
-trigger: none
-pr: none
+pr:
+  branches:
+    include:
+      - '*'
 
 variables:
   - name: TF_LOG
     value: INFO
-  - name: WORKING_DIR
-    value: '$(System.DefaultWorkingDirectory)'
 
 stages:
   - stage: "Terraform_CI"
@@ -40,16 +35,12 @@ stages:
 
           - script: terraform -v
             displayName: 'Terraform Version'
-            workingDirectory: '$(WORKING_DIR)'
 
           - script: terraform init -backend=false
             displayName: 'Terraform Init'
-            workingDirectory: '$(WORKING_DIR)'
 
           - script: terraform validate
             displayName: 'Terraform Validate'
-            workingDirectory: '$(WORKING_DIR)'
 
           - script: terraform fmt -check
             displayName: 'Terraform Format'
-            workingDirectory: '$(WORKING_DIR)'
