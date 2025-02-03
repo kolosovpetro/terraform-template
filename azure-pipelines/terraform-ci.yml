@@ -31,6 +31,7 @@ stages:
             fetchDepth: 0
             
           - task: PowerShell@2
+            displayName: 'Fix Encoding'
             inputs:
               targetType: 'filePath'
               filePath: $(System.DefaultWorkingDirectory)/scripts/verify-encoding.ps1
