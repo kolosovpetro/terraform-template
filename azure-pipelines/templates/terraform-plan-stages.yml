@@ -55,7 +55,7 @@ parameters:
     type: string
     
   - name: destroy
-    type: string
+    type: boolean
 
 stages:
   - stage: ${{ parameters.stageName }}
@@ -110,7 +110,7 @@ stages:
               TF_STATE_BLOB_FILE: ${{ parameters.stateFile }}
               TF_STATE_BLOB_SAS_TOKEN: ${{ parameters.sasToken }}
               
-          - ${{ if eq(parameters.destroy, 'false') }}:
+          - ${{ if eq(parameters.destroy, false) }}:
             - powershell: |
                 terraform plan -var "prefix=${{ parameters.prefix }}" -out main.tfplan
               displayName: 'Terraform Plan'
@@ -121,7 +121,7 @@ stages:
                 ARM_CLIENT_SECRET: ${{ parameters.clientSecret }}
                 ARM_TENANT_ID: ${{ parameters.tenantId }}
                 
-          - ${{ if eq(parameters.destroy, 'true') }}:
+          - ${{ if eq(parameters.destroy, true) }}:
               - powershell: |
                   terraform plan -destroy -var "prefix=${{ parameters.prefix }}" -out main.tfplan
                 displayName: 'Terraform Plan Destroy'

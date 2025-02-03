@@ -42,7 +42,7 @@ stages:
       clientId: $(library-client-id)
       clientSecret: $(library-client-secret)
       tenantId: $(library-tenant-id)
-      destroy: 'false'
+      destroy: false
 
   - template: templates/terraform-apply-stages.yml
     parameters:
