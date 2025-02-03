@@ -27,7 +27,7 @@ stages:
       stageName: ${{ variables.planStageName }}
       VmImage: windows-latest
       terraformVersion: latest
-      workingDirectory: $(System.DefaultWorkingDirectory)/terraform
+      workingDirectory: $(System.DefaultWorkingDirectory)
       storageAccount: $(library-storage-account)
       storageContainer: $(library-storage-container)
       stateFile: $(library-state-file)
@@ -44,7 +44,7 @@ stages:
       stageName: ${{ variables.applyStageName }}
       VmImage: windows-latest
       terraformVersion: latest
-      workingDirectory: $(System.DefaultWorkingDirectory)/terraform
+      workingDirectory: $(System.DefaultWorkingDirectory)
       storageAccount: $(library-storage-account)
       storageContainer: $(library-storage-container)
       stateFile: $(library-state-file)
