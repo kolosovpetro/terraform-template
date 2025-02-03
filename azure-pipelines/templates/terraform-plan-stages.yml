@@ -55,7 +55,7 @@ parameters:
     type: string
     
   - name: destroy
-    type: boolean
+    type: string
 
 stages:
   - stage: ${{ parameters.stageName }}
