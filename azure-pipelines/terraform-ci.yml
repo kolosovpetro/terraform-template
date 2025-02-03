@@ -15,20 +15,30 @@ pr:
 variables:
   - name: TF_LOG
     value: INFO
+  - name: System.Debug
+    value: 'false'
 
 stages:
-  - stage: "Terraform_CI"
-    displayName: "Terraform Validate"
+  - stage: Terraform_CI
+    displayName: Terraform Validate
     jobs:
       - job: Terraform_CI
-        displayName: "Terraform Validate"
+        displayName: Terraform Validate
         pool:
-          vmImage: "ubuntu-latest"
+          vmImage: windows-latest
         steps:
           - checkout: self
             fetchDepth: 0
+            
+          - task: PowerShell@2
+            inputs:
+              targetType: 'filePath'
+              filePath: $(System.DefaultWorkingDirectory)/scripts/verify-encoding.ps1
+              arguments: '-Autofix'
+              pwsh: true
+              workingDirectory: $(System.DefaultWorkingDirectory)
 
-          - task: TerraformInstaller@0
+          - task: TerraformInstaller@1
             displayName: 'Terraform Installer'
             inputs:
               terraformVersion: 'latest'
