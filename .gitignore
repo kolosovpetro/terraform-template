@@ -5,5 +5,7 @@
 *.tfstate
 *.lock.info
 *.tfstate.backup
-*.lock.hcl
 azure.sas.conf
+*.txt
+id_rsa
+id_rsa.pub

@@ -9,7 +9,7 @@ module "azure_region" {
 
 resource "azurerm_resource_group" "public" {
   location = module.azure_region.location_cli
-  name     = local.resource_group_name
+  name     = "${var.resource_group_name}-${var.prefix}"
   tags     = var.tags
 }
 
