@@ -17,3 +17,5 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Update GitHub actions CI
 - Fix encoding and BOM characters
 - Azure pipelines for terraform
+- Add editorconfig
+- Remove example sas token
