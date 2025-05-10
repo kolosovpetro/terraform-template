@@ -13,7 +13,8 @@ variable "prefix" {
 variable "subscription_id" {
   type        = string
   description = "Azure subscription ID"
-  default     = "f32f6566-8fa0-4198-9c91-a3b8ac69e89a" # or 1b08b9a2-ac6d-4b86-8a2f-8fef552c8371
+  default     = "f32f6566-8fa0-4198-9c91-a3b8ac69e89a"
+  #default     = "1b08b9a2-ac6d-4b86-8a2f-8fef552c8371"
 }
 
 variable "tags" {
@@ -46,5 +47,5 @@ variable "tenant_id" {
 variable "client_id" {
   type        = string
   description = "Azure Client ID (Service Principal) used for authentication."
-  default     = "4d65956c-5661-494f-9e7e-c171aec0e53f"
+  default     = "ab0a5dc1-ee52-4574-96e0-469f237928a6"
 }
