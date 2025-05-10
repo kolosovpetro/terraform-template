@@ -19,3 +19,7 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Azure pipelines for terraform
 - Add editorconfig
 - Remove example sas token
+- Remove json variables file
+- Add default values to tf variables
+- Fix encoding script
+- Add public key and password files mocks CI
