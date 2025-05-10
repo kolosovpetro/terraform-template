@@ -23,3 +23,5 @@ and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec
 - Add default values to tf variables
 - Fix encoding script
 - Add public key and password files mocks CI
+- Adopt naming conventions
+- Utilize azure naming module for terraform

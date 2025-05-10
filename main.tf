@@ -1,6 +1,11 @@
 data "azurerm_client_config" "current" {}
 data "azurerm_subscription" "current" {}
 
+module "naming" {
+  source = "Azure/naming/azurerm"
+  suffix = ["template", var.prefix]
+}
+
 #################################################################################################################
 # LOCALS
 #################################################################################################################
@@ -18,7 +23,7 @@ locals {
 
 resource "azurerm_resource_group" "public" {
   location = var.location
-  name     = "rg-tf-template-${var.prefix}"
+  name     = module.naming.resource_group.name_unique
   tags     = var.tags
 }
 
@@ -27,14 +32,14 @@ resource "azurerm_resource_group" "public" {
 #################################################################################################################
 
 resource "azurerm_virtual_network" "public" {
-  name                = "vnet-${var.prefix}"
+  name                = module.naming.virtual_network.name
   address_space       = local.vnet_cidr
   location            = azurerm_resource_group.public.location
   resource_group_name = azurerm_resource_group.public.name
 }
 
 resource "azurerm_subnet" "vm" {
-  name                 = "snet-vm-${var.prefix}"
+  name                 = module.naming.subnet.name_unique
   resource_group_name  = azurerm_resource_group.public.name
   virtual_network_name = azurerm_virtual_network.public.name
   address_prefixes     = local.vm_subnet_cidr
@@ -52,14 +57,4 @@ resource "azurerm_subnet" "bastion_snet" {
   resource_group_name  = azurerm_resource_group.public.name
   virtual_network_name = azurerm_virtual_network.public.name
   address_prefixes     = local.bastion_subnet_cidr
-}
-
-#################################################################################################################
-# MODULE CALL EXAMPLE
-#################################################################################################################
-
-module "resource_group" {
-  source                  = "./modules/module"
-  resource_group_location = var.location
-  resource_group_name     = "rg-from-module-${var.prefix}"
 }
