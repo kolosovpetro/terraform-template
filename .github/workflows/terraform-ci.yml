@@ -48,10 +48,16 @@ jobs:
 
       - name: Terraform Version
         run: terraform -v
-        
+
+      - name: Mock Public key file
+        run: echo test > id_rsa.pub
+
+      - name: Mock Password file
+        run: echo test > password.txt
+
       - name: Verify encoding
         shell: pwsh
-        run: ./scripts/verify-encoding.ps1
+        run: ./scripts/Test-Encoding.ps1
 
       - name: Terraform Init
         run: terraform init -backend=false
