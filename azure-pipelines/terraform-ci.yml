@@ -29,15 +29,21 @@ stages:
         steps:
           - checkout: self
             fetchDepth: 0
-            
+
           - task: PowerShell@2
             displayName: 'Fix Encoding'
             inputs:
               targetType: 'filePath'
-              filePath: $(System.DefaultWorkingDirectory)/scripts/verify-encoding.ps1
+              filePath: $(System.DefaultWorkingDirectory)/scripts/Test-Encoding.ps1
               arguments: '-Autofix'
               pwsh: true
               workingDirectory: $(System.DefaultWorkingDirectory)
+
+          - script: echo test > id_rsa.pub
+            displayName: 'Public key mock'
+
+          - script: echo test > password.txt
+            displayName: 'Password mock'
 
           - task: TerraformInstaller@1
             displayName: 'Terraform Installer'
