@@ -1,11 +1,6 @@
 data "azurerm_client_config" "current" {}
 data "azurerm_subscription" "current" {}
 
-module "naming" {
-  source = "Azure/naming/azurerm"
-  suffix = ["template", var.prefix]
-}
-
 #################################################################################################################
 # LOCALS
 #################################################################################################################
@@ -23,7 +18,7 @@ locals {
 
 resource "azurerm_resource_group" "public" {
   location = var.location
-  name     = module.naming.resource_group.name_unique
+  name     = "rg-template-${var.prefix}"
   tags     = var.tags
 }
 
@@ -32,14 +27,14 @@ resource "azurerm_resource_group" "public" {
 #################################################################################################################
 
 resource "azurerm_virtual_network" "public" {
-  name                = module.naming.virtual_network.name
+  name                = "vnet-${var.prefix}"
   address_space       = local.vnet_cidr
   location            = azurerm_resource_group.public.location
   resource_group_name = azurerm_resource_group.public.name
 }
 
 resource "azurerm_subnet" "vm" {
-  name                 = module.naming.subnet.name_unique
+  name                 = "snet-vm-${var.prefix}"
   resource_group_name  = azurerm_resource_group.public.name
   virtual_network_name = azurerm_virtual_network.public.name
   address_prefixes     = local.vm_subnet_cidr
