@@ -9,3 +9,4 @@ azure.sas.conf
 *.txt
 id_rsa
 id_rsa.pub
+*.pfx

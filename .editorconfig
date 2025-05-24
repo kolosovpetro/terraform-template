@@ -10,3 +10,6 @@ end_of_line = lf
 
 [*.{xml,yml,yaml,json,tf}]
 indent_size = 2
+
+[*.txt]
+insert_final_newline = false
