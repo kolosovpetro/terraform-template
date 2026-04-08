@@ -17,9 +17,3 @@ az storage account create `
 
 # create storage container
 az storage container create --name $container --account-name $storageAccount --public-access "off"
-
-# get SAS token
-$Date = (Get-Date).AddDays(5).ToString('yyyy-MM-dd')
-$key = $( az storage account keys list --resource-group $rgName --account-name $storageAccount --query [0].value -o tsv )
-$sas = $( az storage container generate-sas --name $container --expiry $Date --permissions "racwdli" --account-name $storageAccount --account-key "$key" )
-Write-Host "SAS Token: $sas"
