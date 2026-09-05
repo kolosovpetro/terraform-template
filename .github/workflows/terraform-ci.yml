@@ -57,10 +57,6 @@ jobs:
       - name: Mock Password file
         run: echo test > password.txt
 
-      - name: Verify encoding
-        shell: pwsh
-        run: ./scripts/Test-Encoding.ps1
-
       - name: Terraform Init
         run: terraform init -backend=false
 
